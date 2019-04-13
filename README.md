@@ -1,4 +1,4 @@
-# semester-project
+# my-project
 
 ## Project setup
 ```
