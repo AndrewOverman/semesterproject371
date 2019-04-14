@@ -13,6 +13,12 @@
 
 @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
 
+.champList {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
