@@ -8,6 +8,7 @@ https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/Overhea
 https://ddragon.leagueoflegends.com/cdn/9.7.1/data/en_US/mastery.json
 https://ddragon.leagueoflegends.com/cdn/9.7.1/img/spell/ZyraE.png
 
+
 ## Project setup
 ```
 yarn install
