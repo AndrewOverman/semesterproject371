@@ -22,7 +22,8 @@
           <input id="UpPass" type="password" placeholder="Password">
           <br>
           <button v-on:click="Register">Register</button>
-
+          <br>
+          <button v-on:click="$router.go(-1)">Back</button>
         </div>
       </div>
   </div>

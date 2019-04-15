@@ -2,6 +2,7 @@
   <div id="top">
     <h1 class="title">Ultimate Bravery</h1>
     <button class="link" v-on:click="goToLogin">Login/Register</button>
+    <button class="link" v-on:click="goToAbout">About</button>
     <br>
     <br>
     <table>
@@ -52,8 +53,13 @@
     methods: { 
       goToLogin(){
         this.$router.push({
-        name: 'user-login'
-      });
+          name: 'user-login'
+        });
+      },
+      goToAbout(){
+        this.$router.push({
+          name: 'About'
+        });
       }
     }
   }
