@@ -1,9 +1,13 @@
 <template>
   <div id="top">
     <h1 class="title">Ultimate Bravery</h1>
+    <button class="link" v-on:click="goToLogin">Login/Register</button>
+    <br>
+    <br>
     <table>
       <template v-for="(champ,pos) in champs" class="champList">
-        <img key:pos v-bind:src="'https://ddragon.leagueoflegends.com/cdn/9.7.1/img/champion/' + champ + '.png'" alt="">
+        <img v-bind:key="pos" v-bind:src="'https://ddragon.leagueoflegends.com/cdn/9.7.1/img/champion/' + champ + '.png'" alt="">
+  
       </template>
       
     </table>
@@ -46,7 +50,11 @@
 
     },
     methods: { 
-
+      goToLogin(){
+        this.$router.push({
+        name: 'user-login'
+      });
+      }
     }
   }
 </script>
