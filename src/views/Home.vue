@@ -12,9 +12,9 @@
     <br>
     <h3></h3>
     <br>
-    <p>
-      {{currentUser[0]}}
-    </p>
+    <!-- <p>
+      {{currentUser[currentUser.length - 1]}}
+    </p> -->
     <table>
       <template v-for="(champ,pos) in champs" class="champList">
         <img v-bind:key="pos" v-on:click="greyOutChamp(pos,champ)" v-bind:id=pos width="8%"
@@ -86,6 +86,7 @@
       }
     },
     mounted() {
+      //this.$data.currentUser = [];
       this.getCurrentUser();
     },
     beforeMount() {
