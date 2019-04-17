@@ -14,8 +14,11 @@
 
   .champList {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(10, 1fr);
+  }
 
+  .champImage {
+    size: 50%;
   }
 
   #app {
@@ -38,6 +41,20 @@
   .fields button {
     margin: 5px;
   }
+  .link{
+    margin: 5px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 25px;
+    background-color: lightslategray;
+    color: #fff;
+    padding: 15px;
+  }
+
+  .title{
+    font-size: 40px;
+    font-weight: bold; 
+  }
 
   #nav a {
     font-weight: bold;
@@ -49,12 +66,18 @@
   }
 
   #app {
-    background: #fff;
+    background: blanchedalmond;
     width: 50%;
     padding: 30px;
     border-radius: 10px;
     margin: 50px auto 0 auto;
     height: calc(60% - 50px);
+  }
+  #top{
+    background: blanchedalmond;
+  }
+  .text{
+    width: 30em;
   }
 
   .router-anim-enter-active {

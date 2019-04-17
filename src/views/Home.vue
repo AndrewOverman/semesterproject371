@@ -5,13 +5,13 @@
     <button class="link" v-on:click="goToAbout">About</button>
     <br><br>
     <button class="link" v-on:click="reset">Reset list</button>
-    <button class="link" v-on:click="selectNone">Deselect None</button>
-    <button class="link" v-on:click="getChampion">Get Champion</button>
+    <button class="link" v-on:click="selectNone">Deselect All</button>
+    <button class="link" v-on:click="getChampion">Get Build</button>
     <br>
     <br>
     <table>
       <template v-for="(champ,pos) in champs" class="champList">
-        <img v-bind:key="pos" v-on:click="greyOutChamp(pos,champ)" v-bind:id=pos
+        <img v-bind:key="pos" v-on:click="greyOutChamp(pos,champ)" v-bind:id=pos width="8%"
           v-bind:src="'https://ddragon.leagueoflegends.com/cdn/9.7.1/img/champion/' + champ + '.png'" alt="">
       </template>
 
