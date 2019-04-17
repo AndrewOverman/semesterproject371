@@ -1,4 +1,4 @@
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production' ?
-    '/~overmana/semester/' : '/'
+    '/~vandykti/371-semester-project/' : '/'
 }  
