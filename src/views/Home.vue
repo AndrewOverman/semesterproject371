@@ -2,7 +2,7 @@
   <div id="top">
     <h1 class="title">Ultimate Bravery</h1>
     <button class="link" v-on:click="goToLogin">Login/Register</button>
-    <button class="link" v-on:click="goToPastBuilds">Past Builds </button>
+    <button class="link" v-on:click="goToPastBuilds">Past Champions </button>
     <button class="link" v-on:click="goToCustomBuild">Custom Build</button>
     <button class="link" v-on:click="goToCommunityBuilds">Community Builds</button>
     <br><br>
@@ -12,6 +12,9 @@
     <br>
     <h3></h3>
     <br>
+    <p>
+      {{currentUser[0]}}
+    </p>
     <table>
       <template v-for="(champ,pos) in champs" class="champList">
         <img v-bind:key="pos" v-on:click="greyOutChamp(pos,champ)" v-bind:id=pos width="8%"
@@ -35,11 +38,7 @@
     },
     data() {
       return {
-        currentUser: [MYDB.ref().child("Users")
-          .once('value', snapshot => {
-            snapshot.child(DBAUTH.currentUser.uid).child("Username").val()
-          })
-        ],
+        currentUser: [],
         champs: ["Aatrox", "Ahri", "Akali", "Alistar", "Amumu",
           "Anivia", "Annie", "Ashe", "AurelionSol", "Azir", "Bard",
           "Blitzcrank", "Brand", "Braum", "Caitlyn", "Camille", "Cassiopeia",
@@ -87,13 +86,23 @@
       }
     },
     mounted() {
-
+      this.getCurrentUser();
+    },
+    beforeMount() {
     },
     methods: {
       goToLogin() {
         this.$router.push({
           name: 'user-login'
         });
+      },
+      getCurrentUser() {
+        MYDB.ref().child("Users").once('value', snapshot => {
+          snapshot.forEach(user => {
+            let name = user.child("Username").val();
+            this.$data.currentUser.push(name);
+          })
+        })
       },
       goToCustomBuild() {
         this.$router.push({
@@ -114,11 +123,12 @@
         if (document.getElementById(pos).style.filter != "grayscale(100%)") {
           document.getElementById(pos).style.filter = "grayscale(100%)";
           this.$data.owned = this.$data.owned.filter(chmp => chmp != champ);
-          console.log(MYDB.ref().child("Users").child(DBAUTH.currentUser.uid).child("Username").val());
+          //console.log(MYDB.ref().child("Users").child(DBAUTH.currentUser.uid).child("Username").val());
         } else {
           document.getElementById(pos).style.filter = "grayscale(0%)";
           this.$data.owned.push(champ);
           this.$data.owned.sort();
+          //this.$methods.getCurrentUser();
           console.log(this.$data.currentUser[0]);
         }
       },
