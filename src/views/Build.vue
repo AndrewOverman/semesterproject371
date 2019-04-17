@@ -14,7 +14,6 @@
     <br>
     <button class="link" v-on:click="share()">Share</button>
   </div>
-  <!-- https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Precision/Overheal.png -->
 </template>
 
 <style>

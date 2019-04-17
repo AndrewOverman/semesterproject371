@@ -2,12 +2,15 @@
   <div id="top">
     <h1 class="title">Ultimate Bravery</h1>
     <button class="link" v-on:click="goToLogin">Login/Register</button>
+    <button class="link" v-on:click="goToPastBuilds">Past Builds </button>
     <button class="link" v-on:click="goToCustomBuild">Custom Build</button>
+    <button class="link" v-on:click="goToCommunityBuilds">Community Builds</button>
     <br><br>
     <button class="link" v-on:click="reset">Reset list</button>
     <button class="link" v-on:click="selectNone">Deselect All</button>
     <button class="link" v-on:click="getChampion">Get Build</button>
     <br>
+    <h3></h3>
     <br>
     <table>
       <template v-for="(champ,pos) in champs" class="champList">
@@ -20,12 +23,23 @@
 </template>
 
 <script>
+  import {
+    MYDB
+  } from "./setupMyFirebase.js";
+  import {
+    DBAUTH
+  } from "./setupMyFirebase.js";
   export default {
     props: {
 
     },
     data() {
       return {
+        currentUser: [MYDB.ref().child("Users")
+          .once('value', snapshot => {
+            snapshot.child(DBAUTH.currentUser.uid).child("Username").val()
+          })
+        ],
         champs: ["Aatrox", "Ahri", "Akali", "Alistar", "Amumu",
           "Anivia", "Annie", "Ashe", "AurelionSol", "Azir", "Bard",
           "Blitzcrank", "Brand", "Braum", "Caitlyn", "Camille", "Cassiopeia",
@@ -86,16 +100,26 @@
           name: 'CustomBuild'
         });
       },
+      goToPastBuilds() {
+        this.$router.push({
+          name: 'PastBuilds'
+        });
+      },
+      goToCommunityBuilds() {
+        this.$router.push({
+          name: 'CommunityBuilds'
+        });
+      },
       greyOutChamp(pos, champ) {
         if (document.getElementById(pos).style.filter != "grayscale(100%)") {
           document.getElementById(pos).style.filter = "grayscale(100%)";
           this.$data.owned = this.$data.owned.filter(chmp => chmp != champ);
-          console.log(this.$data.owned);
+          console.log(MYDB.ref().child("Users").child(DBAUTH.currentUser.uid).child("Username").val());
         } else {
           document.getElementById(pos).style.filter = "grayscale(0%)";
           this.$data.owned.push(champ);
           this.$data.owned.sort();
-          console.log(this.$data.owned);
+          console.log(this.$data.currentUser[0]);
         }
       },
       reset() {
@@ -109,7 +133,6 @@
           document.getElementById(i).style.filter = "grayscale(100%)";
         }
         this.$data.owned = [];
-        console.log(this.$data.owned);
       },
       getChampion() {
         var champ = this.$data.owned[Math.floor(Math.random() * this.$data.owned.length)];

@@ -147,7 +147,7 @@
           MYDB.ref().child("CustomBuilds").child(DBAUTH.currentUser.uid).child(newKey).child("Items").set(this.$data
             .selectedItems);
           MYDB.ref().child("CustomBuilds").child(DBAUTH.currentUser.uid).child(newKey).child("Champ").set(this.$data
-            .selectedChampion);
+            .selectedChampion[0]);
           MYDB.ref().child("CustomBuilds").child(DBAUTH.currentUser.uid).child(newKey).child("Comment").set(this.$data
             .buildComment);
         }

@@ -5,6 +5,8 @@ import Home from './views/Home.vue'
 import About from './views/About.vue'
 import Build from './views/Build.vue'
 import CustomBuild from './views/CustomBuild.vue'
+import CommunityBuilds from './views/CommunityBuilds.vue'
+import PastBuilds from './views/PastBuilds.vue'
 
 Vue.use(Router)
 
@@ -37,6 +39,18 @@ export default new Router({
       name: 'CustomBuild',
       props: true,
       component: CustomBuild
+    },
+    {
+      path: '/PastBuilds',
+      name: 'PastBuilds',
+      props: true,
+      component: PastBuilds
+    },
+    {
+      path: '/CommunityBuilds',
+      name: 'CommunityBuilds',
+      props: true,
+      component: CommunityBuilds
     }
   ]
 })
