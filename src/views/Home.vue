@@ -2,7 +2,7 @@
   <div id="top">
     <h1 class="title">Ultimate Bravery</h1>
     <button class="link" v-on:click="goToLogin">Login/Register</button>
-    <button class="link" v-on:click="goToAbout">About</button>
+    <button class="link" v-on:click="goToCustomBuild">Custom Build</button>
     <br><br>
     <button class="link" v-on:click="reset">Reset list</button>
     <button class="link" v-on:click="selectNone">Deselect All</button>
@@ -81,9 +81,9 @@
           name: 'user-login'
         });
       },
-      goToAbout() {
+      goToCustomBuild() {
         this.$router.push({
-          name: 'About'
+          name: 'CustomBuild'
         });
       },
       greyOutChamp(pos, champ) {

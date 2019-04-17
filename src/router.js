@@ -4,6 +4,7 @@ import Login from './views/Login.vue'
 import Home from './views/Home.vue'
 import About from './views/About.vue'
 import Build from './views/Build.vue'
+import CustomBuild from './views/CustomBuild.vue'
 
 Vue.use(Router)
 
@@ -30,6 +31,12 @@ export default new Router({
       name: 'Build',
       props: true,
       component: Build
+    },
+    {
+      path: '/CustomBuild',
+      name: 'CustomBuild',
+      props: true,
+      component: CustomBuild
     }
   ]
 })

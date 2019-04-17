@@ -8,7 +8,7 @@
     <img v-for="items in this.$data.build" v-bind:key="items"
       v-bind:src="'https://ddragon.leagueoflegends.com/cdn/9.7.1/img/item/' +  items + '.png'" alt="">
     <br>
-    <input type="text" placeholder="comments" class="text" v-model="playerComment"> 
+    <input type="text" placeholder="comments" class="text" v-model="playerComment">
     <br>
     <button class="link" v-on:click="$router.go(-1)">Back</button>
     <br>
@@ -25,7 +25,7 @@
 </style>
 
 <script>
-import {
+  import {
     MYDB
   } from "./setupMyFirebase.js";
   import {
@@ -107,14 +107,20 @@ import {
         }
         console.log(this.$data.selectedRunes);
       },
-      share(){
-        let newKey = MYDB.ref().child(DBAUTH.currentUser.uid).push().key;
-        MYDB.ref().child("Builds").child(DBAUTH.currentUser.uid).child(newKey).child("Items").set(this.$data.build);
-        MYDB.ref().child("Builds").child(DBAUTH.currentUser.uid).child(newKey).child("Champ").set(this.$data.selectedChampion);
-        MYDB.ref().child("Builds").child(DBAUTH.currentUser.uid).child(newKey).child("Comment").set(this.$data.playerComment);
-
+      share() {
+        if (this.$data.buildComment == "") {
+          alert("Please input a comment")
+        } else {
+          alert("shared");
+          let newKey = MYDB.ref().child(DBAUTH.currentUser.uid).push().key;
+          MYDB.ref().child("Builds").child(DBAUTH.currentUser.uid).child(newKey).child("Items").set(this.$data.build);
+          MYDB.ref().child("Builds").child(DBAUTH.currentUser.uid).child(newKey).child("Champ").set(this.$data
+            .selectedChampion);
+          MYDB.ref().child("Builds").child(DBAUTH.currentUser.uid).child(newKey).child("Comment").set(this.$data
+            .playerComment);
+        }
       }
-      
+
     }
   }
 </script>
